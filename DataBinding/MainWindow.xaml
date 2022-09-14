@@ -1,0 +1,33 @@
+﻿<Window x:Class="DataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Label Content="ID"/>
+        <TextBox Name="txtId" Text="{Binding Path=Id}" DataContext="{Binding ElementName=lvStudent, Path=SelectedItem}"/>
+        <Label Content="Name"/>
+        <TextBox Name="txtName" Text="{Binding Path=Name}" DataContext="{Binding ElementName=lvStudent, Path=SelectedItem}"/>
+        <Label Content="ID"/>
+        <TextBox Name="txtMajorId" Text="{Binding Path=Major.Id}" DataContext="{Binding ElementName=lvStudent, Path=SelectedItem}"/>
+        <Label Content="Name"/>
+        <TextBox Name="txtMajorName" Text="{Binding Path=Major.Name}" DataContext="{Binding ElementName=lvStudent, Path=SelectedItem}"/>
+        
+        <Button Name="btnSave" Content="Save" Click="btnSave_Click" />
+        <Button Name="btnEdit" Content="Edit" Click="btnEdit_Click" />
+
+        <ListView Name="lvStudent">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="Major ID" DisplayMemberBinding="{Binding Path=Major.Id}"/>
+                    <GridViewColumn Header="Major Name" DisplayMemberBinding="{Binding Path=Major.Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </StackPanel>
+</Window>
